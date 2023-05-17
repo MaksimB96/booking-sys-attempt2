@@ -190,7 +190,7 @@
     height: 70px;
     width: 70px;
     border-radius: 50%;
-    background-image: url("..images/person1.jpg");
+    background-image: url("../images/person1.jpg");
     background-position: center;
     background-size: cover;
     border: 5px solid var(--brand1);
@@ -201,11 +201,11 @@
 }
 
 .tester_new .carousel-indicators li:nth-child(2) {
-    background-image: url("..images/person1.jpg");
+    background-image: url("../images/person1.jpg");
 }
 
 .tester_new .carousel-indicators li:nth-child(3) {
-    background-image: url("..images/person1.jpg");
+    background-image: url("../images/person1.jpg");
 }
 
 .carousel-indicators {
