@@ -38,7 +38,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '8000-maksimb96-booking-sys-at-xi8qvg3i06.us2.codeanyapp.com',
