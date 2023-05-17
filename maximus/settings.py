@@ -30,7 +30,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-maksimb96-booking-sys-at-xi8qvg3i06.us2.codeanyapp.com', 'booking-sys.herokuapp.com']
+ALLOWED_HOSTS = [
+    '8000-maksimb96-booking-sys-at-xi8qvg3i06.us2.codeanyapp.com', 'booking-sys.herokuapp.com']
 
 
 # Application definition
@@ -41,9 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'django_summernote',
     'book',
 ]
 
@@ -81,13 +86,17 @@ WSGI_APPLICATION = 'maximus.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# 
+#
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
