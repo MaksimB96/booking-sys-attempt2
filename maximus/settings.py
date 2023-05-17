@@ -41,7 +41,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-maksimb96-booking-sys-at-xi8qvg3i06.us2.codeanyapp.com', 'https://booking-sys.herokuapp.com/']
+    '8000-maksimb96-booking-sys-at-xi8qvg3i06.us2.codeanyapp.com', 'booking-sys.herokuapp.com']
 
 
 # Application definition
