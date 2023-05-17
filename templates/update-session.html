@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="header text-center">
+    <h1 class="font-head mt-5 mb-4">Update Session</h1>
+</div>
+
+{% if user.is_authenticated %}
+<div class="container update-cont mt-2 mb-5">
+    <div class="row" style="padding-top: 15%;">
+        <div class="col-md-4 mx-auto">
+            <div class="card update-card-style">
+                <div class="card-block">
+                    <form method="POST">
+                        <div class="pl-2 pr-2 pt-2">
+                            {{ form | crispy }}
+                            {% csrf_token %}
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-success">Confirm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container manage-cont">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2 class ="font-head">You need to be logged in, in order to book a session!</h2>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

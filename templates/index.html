@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Jumbotron -->
+<section>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-2 font-head">Results one session at a time!</h1>
+            {% if user.is_authenticated %}
+            <p class="lead font-body">Welcome to the maximus fitness booking system! You can manage your bookings in
+                "Your
+                Sessions" or book a new session in "Book a Session"! </p>
+            <button class="btn btn-outline-danger"><a href="{% url 'book-session' %}">Book Now</a></button>
+            <button class="btn btn-outline-danger"><a href="{% url 'account_signup' %}">Manage</a></button>
+            {% else %}
+            <p class="lead font-body">Welcome to the maximus fitness booking system! Please login to book a session. If
+                you are new please sign up to get started on your fitness journey! </p>
+            <a href="{% url 'account_login' %}" class="btn btn-outline-danger">Login</a>
+            <a href="{% url 'account_signup' %}" class="btn btn-outline-danger">Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- About/Location  -->
+<section id="about-section">
+    <div class="container">
+        <div class="row">
+
+            <!-- About -->
+            <div class="margin-adjust col-md-6 col-sm-12">
+                <div class="left-slide-text">
+                    <h2 class="font-head"><i class="fa-solid fa-question"></i> About</h2>
+                    <p class="font-body">Looking for results? Join me to begin your fitness journey. With the Maximus
+                        Fitness booking
+                        system it's as easy as logging in or signing up! Pick the date,
+                        time and you're good to go! If you're still unsure or simply have questions for us:</p>
+                    <a href="{% url 'home' %}#contact-section" class="btn btn-danger font-head">Contact Us</a>
+                </div>
+            </div>
+            <div class="margin-adjust col-md-6 col-sm-12">
+                <div class="right-slide-img">
+                    <img src="{% static 'img/barbell-dl.jpg' %}" alt="barbell-deadlift" class="barbell-img">
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="margin-adjust col-md-6 col-sm-12">
+                <div class="location">
+                    <img src="{% static 'img/phoenix.jpg' %}" class="location-img" alt="maynooth-uni">
+                </div>
+            </div>
+
+            <div class=" margin-adjust col-md-6 col-sm-12">
+                <div class="right-slide-text text-right">
+                    <h2 class="font-head"><i class="fa-solid fa-location-dot"></i> Location</h2>
+                    <p class="font-body">All sessions, from PT, strength and conditioning classes and one on
+                        one
+                        takes place at
+                        Maynooth University at the Phoenix Sports Center located on North Campus.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Carousel -->
+<section class="margin-adjust tester_new text-center">
+    <h2 class="mt-3 font-head">What Clients Say</h2>
+    <hr>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <p class="font-body">"Good understanding of the needs an athlete needs in order to perfor at
+                            their peak. My
+                            stamina, endurance and explosivness has greatly increased! Max is the real deal!"</p>
+                        <hr>
+                        <h5>John Doe</h5>
+                        <p class="font-body">Muay Thai Fighter</p>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <p class="font-body">"Max really helped me to improve my weak points! Overall allowing me to
+                            bring a better and
+                            more conditioned physique on stage, I would highly reccomend!"</p>
+                        <hr>
+                        <h5>Ryan Garcia</h5>
+                        <p class="font-body">Mens Physique Competitor</p>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <p class="font-body">"Well structured blocks of trianing, with each block having a specific
+                            purpose. Not only has
+                            my body responded well but my run times have drastically improved."</p>
+                        <hr>
+                        <h5>Charlene Derwin</h5>
+                        <p class="font-body">Distance Runner</p>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form -->
+<section id="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h2 class="font-head text-center">Contact Us</h2>
+                <p class="font-body text-center" id="error_message"></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="contact-form">
+                    <form name="index-form" method="post" id="contact_form_index" onsubmit="return sendEmail(this);">
+                        {% csrf_token %}
+                        <div class="con-name form-group">
+                            <input type="text" class="form-control font-body" aria-describedby="emailHelp"
+                                placeholder="Enter your name" id="name" name="name" required>
+                        </div>
+                        <div class="con-email form-group">
+                            <input type="email" class="form-control font-body" placeholder="Enter email" id="email" name="emailaddress"
+                                required>
+                            <small id="emailHelp" class="form-text">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <div class="con-text form-group">
+                            <textarea class="form-control font-body" id="text_area" name="contact-text" cols="30" rows="10"
+                                placeholder="Enter your message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-outline-danger con-submit" id="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <div class="map-area">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2379.6946714426217!2d-6.6060997229626395!3d53.38451237186676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48676ffcdcc92cdb%3A0x6f5cd6c5322dea2f!2sMaynooth%20University%20Sports%20Centre!5e0!3m2!1sen!2sie!4v1683202181981!5m2!1sen!2sie"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
